@@ -1,0 +1,82 @@
+body{
+    background-color: #f4f4f4;
+    font-family: "Helvetica Neue", sans-serif;
+    color:#333333;
+}
+h1, h2, h3, h4, p { padding: 0; margin: 0;}
+h1{
+    font-size: .5em;
+}
+p{
+    font-size: .13em;
+}
+.hero-container img{
+    max-width: 100%;
+height: auto;
+}
+.content-area{
+    margin: 0 auto;
+    height: 80%;
+    width: 80%;
+}
+nav.content-area {
+    overflow: auto; /* or overflow: hidden; */
+}
+nav img{
+    float:left;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+}
+nav ul li{
+    padding: 10px;
+}
+nav ul li a{
+    height: 100%;
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+nav ul li a:hover{
+    border-bottom: #333333 solid 1px;
+
+}
+footer{
+    color: #f4f4f4;
+    background-color: #9f132e;
+    height: 150px;
+}
+#copy {
+    padding: 10px 0;
+    background-color: #433635;
+    color: #f4f4f4;
+}
+/*Speaker Details*/
+.speaker-container{
+    display: flex;
+    justify-content: flex-start;
+}
+.speaker{
+    font-size: 8em;
+}
+#photo img{
+    object-fit: contain;
+    width: 600px;
+    height: 600px;
+}
+#bio{
+    padding-left: 20px;
+}
+#details{
+    width: 100%;
+    padding-left: 20px;
+}
+#links{
+    background-color: #0a3622;
+}
