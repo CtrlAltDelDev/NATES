@@ -2,7 +2,7 @@
 <?php include 'nav.php'; ?>
 <div class="content-area">
     <div class="speaker-container">
-        <div class="speaker" id="photo"><img src="images/Speaker1.png"></div>
+        <div class="speaker" id="photo"><img src="images/Speaker1.png" alt="picture of event speaker Jim"></div>
         <div class="speaker" id="bio">
             <h1>Biography</h1>
             <p>
