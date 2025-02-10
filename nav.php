@@ -5,6 +5,7 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="speaker.php">Speakers</a></li>
             <li><a href="contact.php">Contact</a></li>
+            <li><a href="logIn.php">Log in</a></li>
         </ul>
     </nav>
     <div class="hero-container">
