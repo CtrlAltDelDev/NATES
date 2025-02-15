@@ -46,7 +46,9 @@ nav ul li a{
 }
 nav ul li a:hover{
     border-bottom: #333333 solid 1px;
-
+}
+nav ul li a:active{
+    border-bottom: #333333 solid 1px;
 }
 footer{
     color: #f4f4f4;
