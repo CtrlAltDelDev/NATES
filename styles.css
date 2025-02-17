@@ -1,25 +1,26 @@
-body{
-    background-color: #f4f4f4;
-    font-family: "Helvetica Neue", sans-serif;
-    color:#333333;
+*,
+*::before,
+*::after {
+    /* sets size constraints on elements to stay within the specified box size*/
+    box-sizing: border-box;
 }
-h1, h2, h3, h4, p { padding: 0; margin: 0;}
+body{
+    background-color: hsl(0,0%,96%);
+    font-family: "Helvetica Neue", sans-serif;
+    color:hsl(0,0%,20%);
+}
 h1{
-    padding-bottom: 10px;
-    font-size: 4vw;
+    font-size: 2rem;
 }
 p{
-    font-size: 1.5vw;
-}
-.hero-container img{
-    max-width: 100%;
-height: auto;
+    font-size: 1rem;
 }
 .content-area{
     margin: 0 auto;
     height: 80%;
     width: 80%;
 }
+/*navigation area*/
 nav.content-area {
     overflow: auto; /* or overflow: hidden; */
 }
@@ -33,57 +34,52 @@ nav ul {
 }
 nav ul li{
     padding: 10px;
+
 }
 nav ul li a{
-    height: 100%;
-    font-size: 15px;
-    display: block;
     text-decoration: none;
     text-transform: uppercase;
-    text-align: center;
-    color: black;
+    color: hsl(0,0%,0%);
     cursor: pointer;
 }
 nav ul li a:hover{
-    border-bottom: #333333 solid 1px;
+    border-bottom: hsl(0,0%,20%) solid 1px;
+    margin-bottom: -1px;
 }
-nav ul li a:active{
-    border-bottom: #333333 solid 1px;
+nav ul li a:focus{
+    font-size: 110%;
 }
-footer{
-    color: #f4f4f4;
-    background-color: #9f132e;
-    height: 150px;
-}
-#copy {
-    padding: 10px 0;
-    background-color: #433635;
-    color: #f4f4f4;
+/*end navigation */
+/*banner area*/
+.hero-container img{
+    max-width: 100%;
+    height: auto;
 }
 /*Speaker Details*/
 .speaker-container{
     display: flex;
     justify-content: flex-start;
 }
-.speaker{
-    font-size: 8em;
+figure{
+    width: min-content;
 }
-#photo img{
-    object-fit: contain;
-    width: 400px;
-    height: 400px;
+figure img{
+    width: 300px;
+    height: 300px;
 }
 #bio{
-    padding-left: 20px;
-    max-height: 600px;
+    width: 100%;
+    min-width: 500px;
+    max-height: 500px;
+  /*  border: solid hotpink; */
 }
-
 #details{
     width: 100%;
+    min-width: 875px;
     padding-left: 20px;
 }
 #links{
-    background-color: #0a3622;
+    background-color: 	hsl(153, 69%, 13%);
 }
 /*event*/
 #event-container ul{
@@ -91,19 +87,38 @@ footer{
     margin-right: 40px;
 }
 #event-container ul li{
-    border: solid #333333 1px;
+    display: flex;
+    border: solid hsl(0,0%,20%) 1px;
     margin-bottom: 10px;
     padding:5px;
 }
-
-
-
-
+.speaker-thumb{
+    content: '';
+    display: inline;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: hsl(0,0%,20%) 2px solid;
+    margin-right: 20px;
+}
+/*footer area*/
+footer{
+    color: hsl(0,0%,96%);
+    background-color: hsl(348, 85%, 30%);
+    height: 150px;
+}
+#copy {
+    padding: 10px 0;
+    background-color: hsl(348, 12%, 25%);
+    color: hsl(0, 0%, 96%);
+}
 
 @media screen and (min-width: 1200px) {
-    #photo img {
+    figure img {
         object-fit: contain;
-        width: 600px;
-        height: 600px;
+        width: 500px;
+        height: 500px;
     }
+
 }
+
