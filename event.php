@@ -1,4 +1,4 @@
-<div id="event-container">
+<div class="content-area" id="event-container">
     <h1>Check Back Soon For Upcoming Events...</h1>
     <ul>
         <li>

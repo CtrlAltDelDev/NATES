@@ -29,7 +29,7 @@
             </p>
         </div>
     </div>
-    <div class="speaker" id="details">
+    <div id="details">
         <p>
             Presentation Topics: Advancing Automotive Technical Education and Industry Innovation
             At the NATES Summit, Jim will deliver an in-depth exploration of key trends shaping the automotive repair and service industry.

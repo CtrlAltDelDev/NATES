@@ -4,6 +4,12 @@
     /* sets size constraints on elements to stay within the specified box size*/
     box-sizing: border-box;
 }
+html, body{
+    height: 100%;
+}
+.wrapper{
+    min-height: 100%;
+}
 body{
     background-color: hsl(0,0%,96%);
     font-family: "Helvetica Neue", sans-serif;
@@ -62,6 +68,7 @@ nav ul li a:focus{
 }
 figure{
     width: min-content;
+    margin-inline-start: 0;
 }
 figure img{
     width: 300px;
@@ -69,14 +76,15 @@ figure img{
 }
 #bio{
     width: 100%;
-    min-width: 500px;
+    min-width: 450px;
     max-height: 500px;
   /*  border: solid hotpink; */
 }
 #details{
     width: 100%;
-    min-width: 875px;
-    padding-left: 20px;
+    min-width: 800px;
+    margin-right: 0;
+    margin-left: 0;
 }
 #links{
     background-color: 	hsl(153, 69%, 13%);
@@ -84,7 +92,8 @@ figure img{
 /*event*/
 #event-container ul{
     list-style-type: none;
-    margin-right: 40px;
+    width: 100%;
+    padding-inline-start: 0;
 }
 #event-container ul li{
     display: flex;
@@ -112,13 +121,11 @@ footer{
     background-color: hsl(348, 12%, 25%);
     color: hsl(0, 0%, 96%);
 }
-
 @media screen and (min-width: 1200px) {
     figure img {
         object-fit: contain;
         width: 500px;
         height: 500px;
     }
-
 }
 

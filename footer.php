@@ -7,5 +7,6 @@
             <p>&copy; 2025 NATES. All rights reserved.</p>
         </div>
     </div>
+    </div>
 </body>
 </html>
