@@ -62,6 +62,8 @@ if(isset($_POST['eventName'])){
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
+        echo $message;
+        echo "<a href='../adminEvent.php'>Go Back</a>";
      //   header("location:../adminEvent.php");
     }
 }

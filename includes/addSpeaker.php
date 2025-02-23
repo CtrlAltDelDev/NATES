@@ -17,9 +17,9 @@
             <input type="text" name="phone" id="phone">
             <label for="speakerLinks">Links</label>
             <input type="text" name="speakerLinks" id="speakerLinks">
-            <label for="firstName">Speaker Bio</label>
-            <textarea type="text" name="speakerBio" id="speakerBio"></textarea>
-            <label for=“speakerDetails">Additional speaker Details</label>
+            <label for="speakerBio">Speaker Bio</label>
+            <textarea name="speakerBio" id="speakerBio"></textarea>
+            <label for="speakerDetails">Additional speaker Details</label>
             <textarea name="speakerDetails" id="speakerDetails"></textarea>
             <label for="speakerPhoto">Select an Image</label>
             <input type="file" name="speakerPhoto" id="speakerPhoto">

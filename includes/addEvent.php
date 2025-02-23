@@ -33,7 +33,7 @@
             <label for="eventPrice">Admission Price</label>
             <input type="text" name="eventPrice" id="eventPrice">
 
-            <label for=“eventDescription">Event Details</label>
+            <label for="eventDescription">Event Details</label>
             <textarea name="eventDescription" id="eventDescription"></textarea>
             <input type="submit" value="Submit">
         </fieldset>

@@ -54,6 +54,8 @@ if(isset($_POST["firstName"])){
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
+        echo $message;
+        echo "<a href='../adminUser.php'>Go Back</a>";
         // header("location:../admin.php");
     }
 }

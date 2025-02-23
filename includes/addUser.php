@@ -23,11 +23,11 @@
             <input type="password" name="password" id="password">
 
             <label for="Role">User Role</label>
-            <select type="" name="Role" id="Role">
+            <select name="Role" id="Role">
                 <option value="Admin">Admin</option>
                 <option value="User">User</option>
             </select>
-            <br />
+            <br>
             <input type="submit" value="Submit">
         </fieldset>
     </form>

@@ -28,7 +28,7 @@
             <label for="zipcode">Enter Zip Code</label>
             <input type="text" name="zipcode" id="zipcode">
 
-            <label for=“phone">Location Phone Number</label>
+            <label for="phone">Location Phone Number</label>
             <input type="text" name="phone" id="phone">
 
             <input type="submit" value="Submit">
