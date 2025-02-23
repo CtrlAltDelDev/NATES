@@ -1,6 +1,7 @@
-<?php include 'header.php'; ?>
-<?php include 'nav.php'; ?>
-<div class="content-area">
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/nav.php'; ?>
+<?php include 'includes/heroSlide.php'; ?>
+<main>
     <div class="speaker-container">
         <figure id="photo">
             <img
@@ -38,5 +39,5 @@
             this presentation will cover the following critical topics related new advances in EV battery technologies.
         </p>
     </div>
-</div>
-<?php include 'footer.php'; ?>
+</main>
+<?php include 'includes/footer.php'; ?>

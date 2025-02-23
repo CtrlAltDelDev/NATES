@@ -1,5 +1,5 @@
-<?php include 'header.php'; ?>
-
-<?php include 'nav.php'; ?>
-<?php include 'event.php'; ?>
-<?php include 'footer.php'; ?>
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/nav.php'; ?>
+<?php include 'includes/heroSlide.php'; ?>
+<?php include 'includes/event.php'; ?>
+<?php include 'includes/footer.php'; ?>

@@ -21,10 +21,10 @@ h1{
 p{
     font-size: 1rem;
 }
-.content-area{
+main, nav{
     margin: 0 auto;
-    height: 80%;
     width: 80%;
+    min-width: 600px;
 }
 /*navigation area*/
 nav.content-area {
@@ -32,6 +32,7 @@ nav.content-area {
 }
 nav img{
     float:left;
+    width: 250px;
 }
 nav ul {
     list-style: none;
@@ -59,6 +60,7 @@ nav ul li a:focus{
 /*banner area*/
 .hero-container img{
     max-width: 100%;
+    min-width: 1000px;
     height: auto;
 }
 /*Speaker Details*/
@@ -110,6 +112,72 @@ figure img{
     border: hsl(0,0%,20%) 2px solid;
     margin-right: 20px;
 }
+
+/* Form Style*/
+legend a{
+    text-decoration: none;
+    color: inherit;
+    margin-right: 20px;
+    font-size: 1.2rem;
+
+}
+legend a:hover{
+    border-bottom: hsl(0,0%,20%) solid 2px;
+    margin-bottom: -2px;
+    padding-right: -20px;
+    font-size: 1.3rem;
+}
+form{
+    margin: 20px 0;
+}
+form fieldset {
+    border: 1px solid hsl(0,0%,87%);
+    padding: 20px;
+    background-color: hsl(0,0%,97%);
+    border-radius: 5px;
+}
+/* Stack Inputs */
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: hsl(0,0%, 33%);
+}
+
+/* Style text inputs and text areas uniformly */
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid hsl(0,0%,80%);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+form input[type="submit"] {
+    display: inline-block;
+    background-color: hsl(108,85%,30%);
+    color: hsl(0,0%,100%);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+form input[type="submit"]:hover {
+    background-color: hsl(108,85%,20%);
+}
+
+
+
+
+
+
 /*footer area*/
 footer{
     color: hsl(0,0%,96%);
@@ -127,5 +195,6 @@ footer{
         width: 500px;
         height: 500px;
     }
+
 }
 
