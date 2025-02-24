@@ -55,7 +55,7 @@ if(isset($_POST['eventName'])){
 
         $query = $dbc->prepare("INSERT INTO eventTable (eventName, speakerId, eventDescription, eventStart, eventEnd, locationId, eventPrice, creationDate) VALUES(:eventName, :speakerId, :eventDescription, :eventStart, :eventEnd, :locationId, :eventPrice, :creationDate)");
         $query->execute($data);
-        header("location:../includes/success.php");
+        header("location:../success.php");
 }else {
         $message = "<ul>";
         foreach ($error as $value) {

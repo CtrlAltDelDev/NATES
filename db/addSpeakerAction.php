@@ -52,11 +52,51 @@ if(isset($_POST['firstName']))
     }else{
         $error[] = "You need to enter your speaker Details";
     }
+    if($_POST['photoAlt'] != ""){
+        $photoAlt = $_POST['photoAlt'];
+        $data['photoAlt'] = $photoAlt;
+    }else{
+        $error[] = "You need to enter your photo discription";
+    }
+    if(isset($_FILES['speakerPhoto']) && !empty($_FILES['speakerPhoto'])){
+        $speakerPhoto = $_FILES['speakerPhoto']['tmp_name'];
+        if(!empty($speakerPhoto)){
+            //create target directory
+            if(!is_dir('speakerPhotos')){
+                mkdir('speakerPhotos', 0777, true);
+            }
+            // Extract file info
+            $fileName = pathinfo($_FILES['speakerPhoto']['name']);
+            $fileExtension = $fileName['extension'];
+            $fileSize = $_FILES['speakerPhoto']['size'];
+            $newFileName = $fileName['filename'] . "_" . time() . "." . $fileExtension;
+            $fileAndLocation = "speakerPhotos/" . $newFileName;
+
+            //Allowed Extensions
+            $allowedExtensions = array("jpg", "jpeg", "png", "gif");
+            // check file size
+            if ($fileSize > 2097152) {
+                $error[] = "File size must be less than 2 MB";
+            }
+            // check allowed extensions
+            if(!in_array($fileExtension, $allowedExtensions)) {
+                $error[] = "File type is not allowed";
+            }
+            //// all checks passed upload file
+            if(empty($error)){
+                move_uploaded_file($speakerPhoto, $fileAndLocation);
+                $data['speakerPhoto'] = $fileAndLocation;
+            }else{
+                $error[] = "Some error occured while uploading the file";
+            }
+        }
+    }
+
     if(empty($error)){
         include("../db/dbconnect.php");
-        $query = $dbc->prepare("INSERT INTO speakerTable (firstName, lastName, email, phone, speakerLinks,speakerBio, SpeakerDetails) VALUES (:firstName, :lastName, :email, :phone, :speakerLinks, :speakerBio, :speakerDetails)");
+        $query = $dbc->prepare("INSERT INTO speakerTable (firstName, lastName, email, phone, speakerLinks,speakerBio, SpeakerDetails, photoAlt, speakerPhoto) VALUES (:firstName, :lastName, :email, :phone, :speakerLinks, :speakerBio, :speakerDetails, :photoAlt, :speakerPhoto)");
         $query->execute($data);
-        header("location:../includes/success.php");
+        header("location:../success.php");
     }
     else{
         $message = "<ul>";

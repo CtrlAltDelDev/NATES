@@ -54,7 +54,7 @@ if(isset($_POST['venueName'])){
         include("../db/dbconnect.php");
         $query = $dbc->prepare("INSERT INTO locationTable(venueName, state,city,streetNumber,streetName,suite,zipcode,phone) VALUES(:venueName, :state, :city, :streetNumber, :streetName, :suite, :zipcode, :phone)");
         $query->execute($data);
-        header("location:../includes/success.php");
+        header("location:../success.php");
     }else {
         $message = "<ul>";
         foreach ($errors as $value) {

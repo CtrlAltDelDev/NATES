@@ -22,9 +22,9 @@
             <label for="speakerDetails">Additional speaker Details</label>
             <textarea name="speakerDetails" id="speakerDetails"></textarea>
             <label for="speakerPhoto">Select an Image</label>
-            <input type="file" name="speakerPhoto" id="speakerPhoto">
-            <label for="photoAltText">Photo Description</label>
-            <input type="text" name="photoAltText" id="photoAltText">
+            <input type="file" name="speakerPhoto" id="speakerPhoto" accept="image/jpeg">
+            <label for="photoAlt">Photo Description</label>
+            <input type="text" name="photoAlt" id="photoAlt">
             <input type="submit" value="Submit">
         </fieldset>
     </form>

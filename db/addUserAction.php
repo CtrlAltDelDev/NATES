@@ -46,7 +46,7 @@ if(isset($_POST["firstName"])){
 
         $query = $dbc->prepare("INSERT INTO userTable(firstName, lastName, email, password, phone, Role, createDate) VALUES(:firstName, :lastName, :email, :password, :phone, :Role, :createDate)");
         $query->execute($data);
-        header("location:../includes/success.php");
+        header("location:../success.php");
     }else{
         $message = "<ul>";
         foreach($error as $value)
