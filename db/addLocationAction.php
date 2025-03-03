@@ -36,7 +36,7 @@ if(isset($_POST['venueName'])){
         $suite = $_POST['suite'];
         $data['suite'] = $suite;
     }else{
-        $errors[] = "Suite is required";
+        $data['suite'] = NULL;
     }
     if($_POST['zipcode'] != ""){
         $zipcode = $_POST['zipcode'];

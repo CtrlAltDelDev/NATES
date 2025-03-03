@@ -63,10 +63,24 @@ nav ul li a:focus{
     min-width: 1000px;
     height: auto;
 }
-/*Speaker Details*/
+/* speaker container home page */
 .speaker-container{
     display: flex;
     justify-content: flex-start;
+}
+/*Speaker Details for speakers page*/
+.speakers-container-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding: 0 10px;
+}
+.speakers-container-item img{
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    object-fit: cover;
 }
 figure{
     width: min-content;
@@ -99,9 +113,9 @@ figure img{
 }
 #event-container ul li{
     display: flex;
-    border: solid hsl(0,0%,20%) 1px;
-    margin-bottom: 10px;
-    padding:5px;
+    border-bottom: solid hsl(0,0%,50%) 1px;
+    margin-bottom: 20px;
+    padding:10px;
 }
 .speaker-thumb{
     content: '';

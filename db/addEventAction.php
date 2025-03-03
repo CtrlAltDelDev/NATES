@@ -12,7 +12,7 @@ if(isset($_POST['eventName'])){
         $error['eventName'] = "Event Name is required";
     }
     if($_POST['speakerId'] != ""){
-        $speakerId = $_POST['speakerId'];
+        $speakerId = intval($_POST['speakerId']); // add intval to convert string to int
         $data['speakerId'] = $speakerId;
     }else{
         $error['speakerId'] = "Speaker Name is required";
@@ -36,7 +36,7 @@ if(isset($_POST['eventName'])){
         $error['eventEnd'] = "Event End Date is required";
     }
     if($_POST['locationId'] != ""){
-        $locationId = $_POST['locationId'];
+        $locationId = intval($_POST['locationId']);  // add intval to convert string to int
         $data['locationId'] = $locationId;
     }else{
         $error['locationId'] = "Event Location is required";
@@ -48,6 +48,14 @@ if(isset($_POST['eventName'])){
         $error['eventPrice'] = "Event Price is required";
     }
     if(empty($error)){
+        //test to see what is being passed into database query
+
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+
+        //end test
+
         include("../db/dbconnect.php");
         //if all fields filled in create date and update DB
         $creationDate = date('Y-m-d H:i:s');

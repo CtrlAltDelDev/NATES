@@ -1,3 +1,11 @@
+<?php
+require_once("db/dbconnect.php");
+$speakerquery = $dbc -> prepare("SELECT speakerId, firstName, lastName FROM speakerTable ORDER BY lastName");
+$speakerquery -> execute();
+
+$locationquery = $dbc -> prepare("SELECT locationId, venueName FROM locationTable ORDER BY venueName");
+$locationquery -> execute();
+?>
 <main>
     <form method="post" action="db/addEventAction.php">
         <fieldset>
@@ -12,15 +20,22 @@
 
             <label for="speakerId">Select Speaker</label>
             <select name="speakerId" id="speakerId">
-                <option value="1">Default</option>
-                <option value="2">Speaker 2</option>
-
+                <option value="NULL">Make A Selection</option>
+                <?php
+                while ($speaker = $speakerquery -> fetch()) {
+                    echo "<option value='{$speaker['speakerId']}'>" . $speaker['firstName'] . " " . $speaker['lastName'] . "</option>";
+                }
+                ?>
             </select>
 
             <label for="locationId">Event Location</label>
             <select name="locationId" id="locationId">
-                <option value="1">Sacramento Convention Center</option>
-                <option value="2">Sacramento City Hall</option>
+                <option value="NULL">Make A Selection</option>
+                <?php
+                while ($location = $locationquery -> fetch()) {
+                    echo "<option value='{$location['locationId']}'>" . $location['venueName'] . "</option>";
+                }
+                ?>
 
             </select>
 
