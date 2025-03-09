@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="230af5cc-f07e-448a-994c-01f030a81528" name="Ionos" url="ctrlaltdel.dev/NATES">
+        <fileTransfer rootFolder="/ctrlaltdel/NATES" accessType="SFTP" host="access974456189.webspace-data.io" port="22" sshConfigId="f75406ea-14df-475d-9558-7f3ab8ba96f0" sshConfig="acc990588479@access974456189.webspace-data.io:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="523f824c-99f9-4a35-8f6a-c506b3d69992" name="local" url="http://localhost">
+        <fileTransfer accessType="MOUNT" port="0">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
