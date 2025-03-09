@@ -48,7 +48,4 @@ echo '        </fieldset>';
 echo '    </form>';
 echo '</main>';
 ?>
-<main>
-    <?php
-    include("includes/footer.php");
-    ?>
+<?php include("includes/footer.php"); ?>

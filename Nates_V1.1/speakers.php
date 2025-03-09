@@ -9,7 +9,7 @@
         echo "    <div class = 'speakers-container-item'>";
         echo "<img src='db/{$event['speakerPhoto']}' alt='{$event['photoAlt']}'>";
         echo "<p>"
-            . "About  " . $event["firstName"] . " " . $event['lastName']  . " <a href='speaker.php?event=" . $event['eventId'] . "'>Get Speaker Details</a>" ."</p>";
+            . "About  " . $event["firstName"] . " " . $event['lastName']  . " <a href='speaker.php?speakerId=" . $event['eventId'] . "'>Get Speaker Details</a>" ."</p>";
         echo "    </div>";
     }
     ?>

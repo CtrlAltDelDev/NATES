@@ -12,12 +12,14 @@
     <ul>
         <?php
         while($event = $speakerEventquery->fetch()) {
-            echo "<li>";
-            echo "<img class='speaker-thumb' src='db/{$event['speakerPhoto']}' alt='{$event['photoAlt']}'>";
-            echo "<p>" . "<span style='font-weight: bold;'> " . $event["eventName"] . ": </span>"
-                . "Featuring special guest " . $event["firstName"] . " " . $event['lastName'] . " at "
-                . $event["venueName"] . " on ". $event["start"] . " <a href='event.php?event=" . $event['eventId'] . "'>Get Event Details</a>" ."</p>";
-            echo "</li>";
+            if(isset($event['eventId'])) {
+                echo "<li>";
+                echo "<img class='speaker-thumb' src='db/{$event['speakerPhoto']}' alt='{$event['photoAlt']}'>";
+                echo "<p>" . "<span style='font-weight: bold;'> " . $event["eventName"] . ": </span>"
+                    . "Featuring special guest " . $event["firstName"] . " " . $event['lastName'] . " at "
+                    . $event["venueName"] . " on " . $event["start"] . " <a href='event.php?event=" . $event['eventId'] . "'>Get Event Details</a>" . "</p>";
+                echo "</li>";
+            }
         }
         ?>
         <!--

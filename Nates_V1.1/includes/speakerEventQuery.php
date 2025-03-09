@@ -19,9 +19,9 @@ $speakerEventquery =  $dbc->prepare(
         s.speakerPhoto,
         s.photoAlt,
         l.venueName
-    FROM eventTable e
-    INNER JOIN speakerTable s ON e.speakerId = s.speakerId
-    INNER JOIN locationTable l ON e.locationID = l.locationId
+    FROM speakerTable s
+    LEFT JOIN eventTable e ON e.speakerId = s.speakerId
+    LEFT JOIN locationTable l ON e.locationID = l.locationId
     ORDER BY e.eventStart");
 $speakerEventquery->execute();
 ?>

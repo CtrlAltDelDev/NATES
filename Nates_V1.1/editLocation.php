@@ -32,7 +32,7 @@ if (isset($_GET['locationId'])) {
         echo "            <input type='text' name='streetName' id='streetName' value='" . htmlspecialchars($row['streetName']) . "'>";
 
         echo "            <label for='suite'>Enter Suite Number</label>";
-        echo "            <input type='text' name='suite' id='suite' value='" . htmlspecialchars($row['suite']) . "'>";
+        echo "            <input type='text' name='suite' id='suite' value='" . htmlspecialchars($row['suite'] ?? ' ') . "'>";
 
         echo "            <label for='zipcode'>Enter Zip Code</label>";
         echo "            <input type='text' name='zipcode' id='zipcode' value='" . htmlspecialchars($row['zipcode']) . "'>";

@@ -43,7 +43,7 @@ if (isset($_GET['speakerId'])) {
 
         echo "            <label for='photoAlt'>Photo Description</label>";
         echo "            <input type='text' name='photoAlt' id='photoAlt' value='" . htmlspecialchars($row['photoAlt']) . "'>";
-    }
+    }                   // pass speakerId but keeps hidden from user
     echo "            <input type='hidden' name='speakerId' value='" . $_GET['speakerId'] . "'>";
     echo "            <input type='submit' value='Update Speaker'>";
     echo "        </fieldset>";
@@ -52,66 +52,100 @@ if (isset($_GET['speakerId'])) {
 }
 
 // Handle form submission
-elseif (isset($_POST['speakerId'])) {
+else if (isset($_POST['speakerId'])) {
     $error = array();
     $data = array();
 
-    if (!empty($_POST["firstName"])) {
+    if ($_POST["firstName"]) {
         $data["firstName"] = $_POST["firstName"];
     } else {
         $error["firstName"] = "First name is required";
     }
 
-    if (!empty($_POST["lastName"])) {
+    if ($_POST["lastName"]) {
         $data["lastName"] = $_POST["lastName"];
     } else {
         $error["lastName"] = "Last name is required";
     }
 
-    if (!empty($_POST["email"])) {
+    if ($_POST["email"]) {
         $data["email"] = $_POST["email"];
     } else {
         $error["email"] = "Email is required";
     }
 
-    if (!empty($_POST["phone"])) {
+    if ($_POST["phone"]) {
         $data["phone"] = $_POST["phone"];
     } else {
         $error["phone"] = "Phone is required";
     }
 
-    if (!empty($_POST["speakerLinks"])) {
+    if ($_POST["speakerLinks"]) {
         $data["speakerLinks"] = $_POST["speakerLinks"];
+    } else{
+        $error["speakerLinks"] = "Speaker links are required";
     }
 
-    if (!empty($_POST["speakerBio"])) {
+    if ($_POST["speakerBio"]) {
         $data["speakerBio"] = $_POST["speakerBio"];
+    } else {
+        $error["speakerBio"] = "Speaker Bio is required";
     }
 
-    if (!empty($_POST["speakerDetails"])) {
+    if ($_POST["speakerDetails"]) {
         $data["speakerDetails"] = $_POST["speakerDetails"];
+    } else {
+        $error["speakerDetails"] = "Speaker details are required";
     }
 
-    if (!empty($_POST["photoAlt"])) {
+    if ($_POST["photoAlt"]) {
         $data["photoAlt"] = $_POST["photoAlt"];
+    } else {
+        $error["photoAlt"] = "Photo alt is required";
     }
 
-    // Handle Image Upload
-    if (!empty($_FILES["speakerPhoto"]["name"])) {
-        $targetDir = "uploads/";
-        $fileName = basename($_FILES["speakerPhoto"]["name"]);
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+// Handle Image Upload
+    if (isset($_FILES['speakerPhoto']) && $_FILES['speakerPhoto']['error'] === 0) {
+        $targetDir = "speakerPhotos/";
+        $uploadDir =   "db/speakerPhotos/";     // fix wrong file directory
 
-        // Allow only JPEG
-        if (strtolower($fileType) !== "jpg" && strtolower($fileType) !== "jpeg") {
-            $error["speakerPhoto"] = "Only JPG/JPEG images are allowed.";
+        // Ensure directory exists and set permissions
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        // Extract file info
+        $fileName = basename($_FILES['speakerPhoto']['name']);
+        $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $fileSize = $_FILES['speakerPhoto']['size'];
+
+        // Generate a unique filename for data table
+        $newFileName = uniqid("speaker_") . "." . $fileExtension;
+        $targetFilePath =  $targetDir . $newFileName;
+        $uploadFilePath =  $uploadDir . $newFileName;
+
+        // Allowed Extensions
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+
+        // Validate file type and size
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            die("Invalid file type: " . $fileExtension);
+        }
+
+        if ($fileSize > 2097152) {
+            die("File too large");
+        }
+
+        // Move file to destination
+        if (move_uploaded_file($_FILES["speakerPhoto"]["tmp_name"], $uploadFilePath)) {
+            echo "File uploaded successfully: " . $uploadFilePath;
+            $data["speakerPhoto"] = $targetFilePath;        // actual path in data table
         } else {
-            move_uploaded_file($_FILES["speakerPhoto"]["tmp_name"], $targetFilePath);
-            $data["speakerPhoto"] = $targetFilePath;
+            die("File upload failed! Check folder permissions.");
         }
     }
 
+    // ensures speaker id is correctly set back to it original id
     $data['speakerId'] = $_POST['speakerId'];
 
     if (empty($error)) {
@@ -129,6 +163,10 @@ elseif (isset($_POST['speakerId'])) {
         ");
 
         if (!empty($data["speakerPhoto"])) {
+//            print_r($data['speakerPhoto']);
+//            echo"<br>";
+//            print_r($data['speakerId']);
+//            exit();
             $updatequery = $dbc->prepare("
                 UPDATE speakerTable 
                 SET firstName = :firstName, 
@@ -142,6 +180,7 @@ elseif (isset($_POST['speakerId'])) {
                     photoAlt = :photoAlt
                 WHERE speakerId = :speakerId
             ");
+
         }
 
         // Debugging: Check what data is being passed

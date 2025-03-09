@@ -4,6 +4,6 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="speakers.php">Speakers</a></li>
             <li><a href="contact.php">Contact</a></li>
-            <li><a href="addUser.php">Admin</a></li>
+            <li><a href="admin.php">Admin</a></li>
         </ul>
     </nav>

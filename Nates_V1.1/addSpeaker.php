@@ -9,7 +9,7 @@ echo '    <form method="post" enctype="multipart/form-data" action="db/addSpeake
 echo '        <fieldset>';
 echo '            <legend>';
 echo '                <a href="admin.php">Edit</a>';
-echo '                <a href="addUser.php">Add Speaker</a>';
+echo '                <a href="addSpeaker.php">Add Speaker</a>';
 echo '                <a href="addEvent.php">Add Event</a>';
 echo '                <a href="addLocation.php">Add New Location</a>';
 echo '                <a href="addUser.php">Add User</a>';
