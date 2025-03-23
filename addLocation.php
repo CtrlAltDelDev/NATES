@@ -5,15 +5,9 @@ include_once("db/dbconnect.php");
 ?>
 <?php
 echo '<main>';
-echo '    <form method="post" action="db/add_location_action.php">';
-echo '        <fieldset>';
-echo '            <legend>';
-echo '                <a href="admin.php">Edit</a>';
-echo '                <a href="addUser.php">Add Speaker</a>';
-echo '                <a href="addEvent.php">Add Event</a>';
-echo '                <a href="addLocation.php">Add New Location</a>';
-echo '                <a href="addUser.php">Add User</a>';
-echo '            </legend>';
+echo '    <form method="post" action="db/addLocationAction.php">';
+                include("includes/adminNav.php"); // fieldset // legend // nav area
+
 
 echo '            <label for="venue_name">Enter Venue Name</label>';
 echo '            <input type="text" name="venue_name" id="venue_name">';

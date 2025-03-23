@@ -4,9 +4,9 @@ $user1 = 'root';
 $pass1 = 'root';
 $db1 = 'mysql:host=localhost; dbname=NATES';
 // ctrlaltdel.dev/NATES
-$user2 = 'dbu1026992';
+$user2 = 'dbu2579167';
 $pass2 = 'Rootzs25';
-$db2 = 'mysql:db5017384773.hosting-data.io;dbname=dbs13939436';
+$db2 = 'mysql:host=db5017268506.hosting-data.io;dbname=dbs13857002';
 
 try{
     $dbc = new PDO($db1, $user1, $pass1);

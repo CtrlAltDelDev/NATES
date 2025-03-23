@@ -94,6 +94,9 @@ if (isset($_POST['first_name'])) {
             } else {
                 $error[] = "Some error occurred while uploading the file";
             }
+        }else {
+            // Set default image if no file uploaded
+            $data['speaker_photo'] = "speakerPhotos/default-avatar-photo.jpg";
         }
     }
 

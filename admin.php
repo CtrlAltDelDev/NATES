@@ -17,13 +17,7 @@ $user_query->execute();
 <main>
     <form>
         <fieldset>
-            <legend>
-                <a href="admin.php">Edit</a>
-                <a href="addUser.php">Add Speaker</a>
-                <a href="addEvent.php">Add Event</a>
-                <a href="addLocation.php">Add New Location</a>
-                <a href="addUser.php">Add User</a>
-            </legend>
+<?php include("includes/adminNav.php"); // fieldset // legend // nav area ?>
             <?php if ($speaker_query->rowCount() > 0) { ?>
                 <h2>Edit Speakers</h2>
                 <ul>

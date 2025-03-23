@@ -20,6 +20,8 @@
 <h3 style="width: fit-content; margin: 0 auto;">SUCCESS!</h3>
 <h4 style="width: fit-content; margin: 0 auto;">SUCCESS!</h4>
 <h5 style="width: fit-content; margin: 0 auto;">SUCCESS!</h5>
+<a href='admin.php'>Go Back</a>
+
 </body>
 </html>
 

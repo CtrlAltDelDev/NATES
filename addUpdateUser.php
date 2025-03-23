@@ -1,4 +1,5 @@
 <?php
+global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
@@ -26,9 +27,7 @@ if ($editing) {
 }
 
 echo '<main>';
-if (isset($_GET['error'])) {
-    echo "<section>" . $_GET['error'] . "</section>";
-}
+
 
 $form_action = $_SERVER['PHP_SELF']; // Same page for processing
 
@@ -68,6 +67,13 @@ if ($editing) {
 // Submit button text: "Update User" if editing, "Create User" otherwise
 $button_text = $editing ? "Update User" : "Create User";
 echo "<input type='submit' value='$button_text'>";
+
+if (isset($_GET['error'])) {
+    echo "<h3>Correct the following errors:</h3>";
+    echo "<section class='error-message'>" . $_GET['error'] . "</section>";
+}else{
+    echo "<section class='success-message'>$button_text</section>";
+}
 
 echo "</fieldset>";
 echo "</form>";
@@ -111,6 +117,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: success.php");
             exit();
         } else {  // CREATE new user
+            $create_date = date('Y-m-d H:i:s');
+            $data['create_date'] = $create_date;
+
             $insert_query = "INSERT INTO user_table (" . implode(", ", array_keys($data)) . ") VALUES (:" . implode(", :", array_keys($data)) . ")";
             $insert_stmt = $dbc->prepare($insert_query);
             $insert_stmt->execute($data);

@@ -14,6 +14,7 @@ if (isset($_GET['speaker_id'])) {
         echo "<section>" . $_GET['error'] . "</section>";
     }
     echo "    <form method='post' enctype='multipart/form-data' action='" . $_SERVER['PHP_SELF'] . "'>";
+
     include("includes/adminNav.php"); // fieldset // legend // nav area
 
     while ($row = $get_records_query->fetch()) {

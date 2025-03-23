@@ -1,8 +1,10 @@
 <?php
+global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
 ?>
+
 <?php
 require_once("db/dbconnect.php");
 $speaker_query = $dbc->prepare("SELECT speaker_id, first_name, last_name FROM speaker_table ORDER BY last_name");
@@ -11,17 +13,11 @@ $speaker_query->execute();
 $location_query = $dbc->prepare("SELECT location_id, venue_name FROM location_table ORDER BY venue_name");
 $location_query->execute();
 ?>
+
 <?php
 echo '<main>';
 echo '    <form method="post" action="db/add_event_action.php">';
-echo '        <fieldset>';
-echo '            <legend>';
-echo '                <a href="admin.php">Edit</a>';
-echo '                <a href="addUser.php">Add Speaker</a>';
-echo '                <a href="addEvent.php">Add Event</a>';
-echo '                <a href="addLocation.php">Add New Location</a>';
-echo '                <a href="addUser.php">Add User</a>';
-echo '            </legend>';
+                include("includes/adminNav.php"); // <fieldset> // <legend>// nav area
 
 echo '            <label for="event_name">Event Name</label>';
 echo '            <input type="text" name="event_name" id="event_name">';

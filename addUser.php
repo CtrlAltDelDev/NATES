@@ -9,19 +9,15 @@ if (isset($_GET['user_id'])) {
     $get_records_query = $dbc->prepare("SELECT * FROM `user_table` WHERE user_id = :user_id");
     $get_records_query->bindParam(':user_id', $_GET['user_id']);
     $get_records_query->execute();
+
+
 }
 ?>
 <?php
 echo '<main>';
-echo '    <form method="post" action="db/add_user_action.php">';
-echo '        <fieldset>';
-echo '            <legend>';
-echo '                <a href="admin.php">Edit</a>';
-echo '                <a href="addUser.php">Add Speaker</a>';
-echo '                <a href="addEvent.php">Add Event</a>';
-echo '                <a href="addLocation.php">Add New Location</a>';
-echo '                <a href="addUser.php">Add User</a>';
-echo '            </legend>';
+echo '    <form method="post" action="db/addUserAction.php">';
+                include("includes/adminNav.php"); // fieldset // legend // nav area
+
 echo '            <label for="first_name">First Name</label>';
 echo '            <input type="text" name="first_name" id="first_name">';
 
@@ -44,6 +40,8 @@ echo '                <option value="User">User</option>';
 echo '            </select>';
 echo '            <br>';
 echo '            <input type="submit" value="Submit">';
+
+
 echo '        </fieldset>';
 echo '    </form>';
 echo '</main>';

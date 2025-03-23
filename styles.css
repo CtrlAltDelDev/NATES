@@ -26,7 +26,13 @@ main, nav{
     width: 80%;
     min-width: 600px;
 }
+
 /*navigation area*/
+.search-form{
+    display: flex;
+    margin-left: auto;
+    width: 325px;
+}
 nav.content-area {
     overflow: auto; /* or overflow: hidden; */
 }
@@ -56,18 +62,20 @@ nav ul li a:hover{
 nav ul li a:focus{
     font-size: 110%;
 }
-/*end navigation */
+
 /*banner area*/
 .hero-container img{
     max-width: 100%;
     min-width: 1000px;
     height: auto;
 }
+
 /* speaker container home page */
 .speaker-container{
     display: flex;
     justify-content: flex-start;
 }
+
 /*Speaker Details for speakers page*/
 .speakers-container-item {
     display: inline-block;
@@ -105,6 +113,7 @@ figure img{
 #links{
     background-color: 	hsl(153, 69%, 13%);
 }
+
 /*event*/
 #event-container ul{
     list-style-type: none;
@@ -151,6 +160,7 @@ form fieldset {
     border-radius: 5px;
     min-width: 650px;
 }
+
 /* Stack Inputs */
 form label {
     display: block;
@@ -189,10 +199,12 @@ form input[type="submit"]:hover {
     background-color: hsl(108,85%,20%);
 }
 
+/* Error Handling */
 
-
-
-
+.error-message ul li {
+    list-style: none;
+    color: hsl(348, 85%, 30%)
+}
 
 /*footer area*/
 footer{
