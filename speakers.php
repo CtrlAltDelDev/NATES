@@ -1,4 +1,5 @@
-<?php include 'includes/header.php'; ?>
+<?php global $speakerEventquery;
+include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
 <?php include 'includes/heroSlide.php'; ?>
 <?php include 'includes/speakerEventQuery.php'; ?>

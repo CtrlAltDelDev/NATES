@@ -1,5 +1,6 @@
 <?php
 // TODO: need to handle speaker photo storage
+global $dbc;
 if (isset($_POST['first_name'])) {
     $error = array();
     $data = array();

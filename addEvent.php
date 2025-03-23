@@ -16,7 +16,7 @@ $location_query->execute();
 
 <?php
 echo '<main>';
-echo '    <form method="post" action="db/add_event_action.php">';
+echo '    <form method="post" action="db/addEventAction.php">';
                 include("includes/adminNav.php"); // <fieldset> // <legend>// nav area
 
 echo '            <label for="event_name">Event Name</label>';
