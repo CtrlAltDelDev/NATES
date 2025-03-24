@@ -1,6 +1,7 @@
 <?php
 global $dbc;
 require_once("db/dbconnect.php");
+
 $speakerEventquery =  $dbc->prepare(
     "SELECT
            e.event_id,

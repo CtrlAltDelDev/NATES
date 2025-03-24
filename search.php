@@ -14,7 +14,7 @@
     } elseif(isset($_GET['search'])){
         $search = $_GET['search'];
     } else {
-        $search = '';       // left blank to prevent undefined variable warning
+//        header("Location: index.php");
     }
 
     if(isset($_GET['start']))
@@ -76,6 +76,8 @@ FROM speaker_table s
     ORDER BY e.event_start
     LIMIT $start, $rowsPerPage");
 
+
+
     $eventQuery -> bindValue(':search', '%' . $search . '%');
     $eventQuery -> execute();
 
@@ -85,13 +87,11 @@ FROM speaker_table s
 
 
     if($eventQuery->rowCount() > 0){
-        echo  "<h1>Check out our upcoming events</h1>";
+    echo  "<h1>Check out our upcoming events</h1>";
 
-    }elseif($search == ''){
-        echo "<h1>Check Back Soon For Upcoming Events...</h1>";
     }else{
-        echo "<h1>Your Search Did Not Yield Any Results</h1>";
-        echo "<script>alert('Your Search Did Not Yield Any Results')</script>";
+    echo "<h1>Check Back Soon For Upcoming Events...</h1>";
+
     }
     ?>
     <ul>
@@ -118,14 +118,14 @@ FROM speaker_table s
                 $currentPage = ($start/$rowsPerPage) + 1;
                 if($currentPage != 1){
                     //only show when not on first page
-                    echo "<a href='index.php?start=" . ($start-$rowsPerPage) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>Previous</a>";
+                    echo "<a href='search.php?start=" . ($start-$rowsPerPage) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>Previous</a>";
                 }
 
 
                 //show numbered pages here, with current page unlinked
                 for($i = 1; $i <= $numPages; $i++){
                     if($i != $currentPage){
-                        echo " <a href='index.php?start=" . ($rowsPerPage * ($i - 1)) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>$i</a> ";
+                        echo " <a href='search.php?start=" . ($rowsPerPage * ($i - 1)) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>$i</a> ";
                     } else {
                         echo " " . $i;
                     }
@@ -134,7 +134,7 @@ FROM speaker_table s
 
                 if($currentPage != $numPages){
                     //only show when not on last page
-                    echo "<a href='index.php?start=" . ($start+$rowsPerPage) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>Next</a>";
+                    echo "<a href='search.php?start=" . ($start+$rowsPerPage) . "&search=$search&numpages=$numPages&totalrows=$totalRows'>Next</a>";
                 }
             }
             ?>

@@ -1,4 +1,5 @@
 <?php
+global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
