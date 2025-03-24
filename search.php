@@ -14,7 +14,7 @@
     } elseif(isset($_GET['search'])){
         $search = $_GET['search'];
     } else {
-//        header("Location: index.php");
+        header("Location: index.php");
     }
 
     if(isset($_GET['start']))

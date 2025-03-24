@@ -1,6 +1,6 @@
 
     <nav class="content-area">
-        <img src="images/logo.png" alt="hero image of speaker at summit">
+        <a href="index.php"><img src="images/logo.png" alt="hero image of speaker at summit"></a>
         <form action="index.php" method="POST" class="search-form">
             <input type="text" name="search" id="search" placeholder="Search...">
             <button type="submit">Search</button>
