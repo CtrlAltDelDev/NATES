@@ -1,6 +1,10 @@
-<?php global $speakerEventquery;
+<?php
+session_start();
+
+global $speakerEventquery;
 include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
+<?php include("includes/flashMessage.php"); ?>
 <?php include 'includes/heroSlide.php'; ?>
 <?php include 'includes/speakerEventQuery.php'; ?>
 <main>

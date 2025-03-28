@@ -1,4 +1,5 @@
 <?php
+session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -13,7 +14,7 @@ $speaker_query->execute();
 $location_query = $dbc->prepare("SELECT location_id, venue_name FROM location_table ORDER BY venue_name");
 $location_query->execute();
 ?>
-
+<?php include("includes/flashMessage.php"); ?>
 <?php
 echo '<main>';
 echo '    <form method="post" action="db/addEventAction.php">';
@@ -60,6 +61,4 @@ echo '    </form>';
 echo '</main>';
 ?>
 
-<?php
-include("includes/footer.php");
-?>
+<?php include("includes/footer.php"); ?>

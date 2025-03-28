@@ -1,4 +1,5 @@
 <?php
+session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -13,8 +14,8 @@ if (isset($_GET['speaker_id'])) {
     if (isset($_GET['error'])) {
         echo "<section>" . $_GET['error'] . "</section>";
     }
+    include("includes/flashMessage.php");
     echo "    <form method='post' enctype='multipart/form-data' action='" . $_SERVER['PHP_SELF'] . "'>";
-
     include("includes/adminNav.php"); // fieldset // legend // nav area
 
     while ($row = $get_records_query->fetch()) {
@@ -150,22 +151,26 @@ elseif (isset($_POST['speaker_id'])) {
 
         $update_query->execute($data);
 
-        header("Location: success.php");
-        exit();
+        session_start();
+        // applies message to session super global
+        $_SESSION['message'] = "Added successfully!";
+        $_SESSION['message_type'] = "success";
+        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&speaker_id=" .$_POST['speaker_id']);
+        exit;
+
     } else {
         $message = "<ul>";
         foreach ($error as $value) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        $message = urlencode($message);
+        session_start();
+        $_SESSION["message"] = $message;
+        $_SESSION['message_type'] = "error";
 
         header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&speaker_id=" . $_POST['speaker_id']);
         exit();
     }
-} else {
-    header("Location: addSpeaker.php");
-    exit();
 }
 
 include("includes/footer.php");

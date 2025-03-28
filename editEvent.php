@@ -1,4 +1,6 @@
 <?php
+session_start();
+global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
@@ -13,6 +15,8 @@ if (isset($_GET['event_id'])) {
         echo "<section>" . $_GET['error'] . "</section>";
     }
     echo "    <form method='post' action='" . $_SERVER['PHP_SELF'] . "'>";
+
+    include("includes/flashMessage.php");
     include("includes/adminNav.php"); // fieldset // legend // nav area
 
     while ($row = $get_records_query->fetch()) {
@@ -130,23 +134,26 @@ elseif (isset($_POST['event_id'])) {
         // print_r($data); // Uncomment this line for debugging
 
         $update_query->execute($data);
+        session_start();
+        // applies message to session super global
+        $_SESSION['message'] = "Added successfully!";
+        $_SESSION['message_type'] = "success";
+        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&event_id=" .$_POST['event_id']);
+        exit;
 
-        header("Location: success.php");
-        exit();
     } else {
         $message = "<ul>";
         foreach ($error as $value) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        $message = urlencode($message);
+        session_start();
+        $_SESSION["message"] = $message;
+        $_SESSION['message_type'] = "error";
 
         header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&event_id=" . $_POST['event_id']);
         exit();
     }
-} else {
-    header("Location: addEvent.php");
-    exit();
 }
 
 include("includes/footer.php");

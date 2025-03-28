@@ -1,4 +1,5 @@
 <?php
+session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -24,7 +25,7 @@ if (isset($_GET['user_id'])) {
     if (isset($_GET['error'])) {
         echo "<section>" . $_GET['error'] . "</section>";
     }
-
+    include("includes/flashMessage.php");
     echo "<form method='post' action='" . $_SERVER['PHP_SELF'] . "'>";
     include("includes/adminNav.php"); // fieldset // legend // nav area
 
@@ -103,16 +104,23 @@ elseif (isset($_POST['user_id'])) {
         $update_query = "UPDATE user_table SET " . implode(", ", $update_parts) . " WHERE user_id = :user_id";
         $update_stmt = $dbc->prepare($update_query);
         $update_stmt->execute($data);
+        session_start();
+        // applies message to session super global
+        $_SESSION['message'] = "Added successfully!";
+        $_SESSION['message_type'] = "success";
 
-        header("Location: success.php");
-        exit();
+        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&user_id=" .$_POST['user_id']);
+        exit;
+
     } else {
         $message = "<ul>";
         foreach ($error as $value) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        $message = urlencode($message);
+        session_start();
+        $_SESSION["message"] = $message;
+        $_SESSION['message_type'] = "error";
 
         header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&user_id=" . $_POST['user_id']);
         exit();

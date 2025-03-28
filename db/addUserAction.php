@@ -54,16 +54,24 @@ if (isset($_POST["first_name"])) {
 
         $query = $dbc->prepare("INSERT INTO user_table (first_name, last_name, email, password, phone, role, create_date) VALUES (:first_name, :last_name, :email, :password, :phone, :role, :create_date)");
         $query->execute($data);
-        header("location:../success.php");
+        session_start();
+        // applies message to session super global
+        $_SESSION['message'] = "Added successfully!";
+        $_SESSION['message_type'] = "success";
+        header("Location: ../addUser.php");
+        exit;
+
     } else {
         $message = "<ul>";
         foreach ($error as $value) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        echo $message;
-        echo "<a href='../addUser.php'>Go Back</a>";
-        // header("location:../admin.php");
+        session_start();
+        $_SESSION["message"] = $message;
+        $_SESSION['message_type'] = "error";
+        header("location:../addUser.php");
+        exit;
     }
 }
 ?>

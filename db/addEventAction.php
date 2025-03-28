@@ -2,6 +2,7 @@
 // TODO  import speakerID from speaker table
 // TODO  import locationID from location table
 
+global $dbc;
 if (isset($_POST['event_name'])) {
     $error = array();
     $data = array();
@@ -57,9 +58,9 @@ if (isset($_POST['event_name'])) {
 
     if (empty($error)) {
         // test to see what is being passed into database query
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
         // end test
 
         include("../db/dbconnect.php");
@@ -71,16 +72,24 @@ if (isset($_POST['event_name'])) {
         $query = $dbc->prepare("INSERT INTO event_table (event_name, speaker_id, event_description, event_start, event_end, location_id, event_price, creation_date) 
                                 VALUES(:event_name, :speaker_id, :event_description, :event_start, :event_end, :location_id, :event_price, :creation_date)");
         $query->execute($data);
-        header("location:../success.php");
+        // applies message to session super global
+        session_start();
+        $_SESSION['message'] = "Added successfully!";
+        $_SESSION['message_type'] = "success";
+        header("Location: ../addEvent.php");
+        exit;
+
     } else {
         $message = "<ul>";
         foreach ($error as $value) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        echo $message;
-        echo "<a href='../addEvent.php'>Go Back</a>";
-        // header("location:../addEvent.php");
+        session_start();
+        $_SESSION["message"] = $message;
+        $_SESSION['message_type'] = "error";
+        header("location:../addEvent.php");
+        exit;
     }
 }
 ?>

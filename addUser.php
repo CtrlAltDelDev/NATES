@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -13,6 +15,8 @@ if (isset($_GET['user_id'])) {
 
 }
 ?>
+<?php include("includes/flashMessage.php"); ?>
+
 <?php
 echo '<main>';
 echo '    <form method="post" action="db/addUserAction.php">';
@@ -40,8 +44,6 @@ echo '                <option value="User">User</option>';
 echo '            </select>';
 echo '            <br>';
 echo '            <input type="submit" value="Submit">';
-
-
 echo '        </fieldset>';
 echo '    </form>';
 echo '</main>';

@@ -1,8 +1,10 @@
+<?php session_start(); ?>
 <?php
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
 ?>
+<?php include("includes/flashMessage.php"); ?>
 <?php
 echo '<main>';
 echo '    <form method="post" action="db/addLocationAction.php">';

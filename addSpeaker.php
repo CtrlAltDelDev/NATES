@@ -1,8 +1,11 @@
 <?php
+session_start();
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
 ?>
+<?php include("includes/flashMessage.php"); ?>
+
 <?php
 echo '<main>';
 echo '    <form method="post" enctype="multipart/form-data" action="db/addSpeakerAction.php">';
