@@ -1,5 +1,6 @@
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
+<?php include 'includes/flashMessage.php'; ?>
 <?php include 'includes/heroSlide.php'; ?>
 <main id="event-container">
     <?php

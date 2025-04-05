@@ -16,6 +16,7 @@ $user_query->execute();
 ?>
 <main>
     <form>
+        <?php include("includes/flashMessage.php"); ?>
 <?php include("includes/adminNav.php"); // fieldset // legend // nav area ?>
             <?php if ($speaker_query->rowCount() > 0) { ?>
                 <h2>Edit Speakers</h2>

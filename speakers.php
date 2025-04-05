@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 global $speakerEventquery;
 include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>

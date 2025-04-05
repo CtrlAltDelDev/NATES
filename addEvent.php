@@ -1,5 +1,4 @@
 <?php
-session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -55,7 +54,7 @@ echo '            <input type="text" name="event_price" id="event_price">';
 echo '            <label for="event_description">Event Details</label>';
 echo '            <textarea name="event_description" id="event_description"></textarea>';
 
-echo '            <input type="submit" value="Submit">';
+echo '            <br><input type="submit" value="Submit">';
 echo '        </fieldset>';
 echo '    </form>';
 echo '</main>';

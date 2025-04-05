@@ -1,5 +1,4 @@
 <?php
-session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -134,11 +133,10 @@ elseif (isset($_POST['event_id'])) {
         // print_r($data); // Uncomment this line for debugging
 
         $update_query->execute($data);
-        session_start();
         // applies message to session super global
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
-        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&event_id=" .$_POST['event_id']);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?event_id=" .$_POST['event_id']);
         exit;
 
     } else {
@@ -147,10 +145,8 @@ elseif (isset($_POST['event_id'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
-
         header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&event_id=" . $_POST['event_id']);
         exit();
     }

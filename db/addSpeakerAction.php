@@ -106,7 +106,6 @@ if (isset($_POST['first_name'])) {
         $query = $dbc->prepare("INSERT INTO speaker_table (first_name, last_name, email, phone, speaker_links, speaker_bio, speaker_details, photo_alt, speaker_photo) 
                                 VALUES (:first_name, :last_name, :email, :phone, :speaker_links, :speaker_bio, :speaker_details, :photo_alt, :speaker_photo)");
         $query->execute($data);
-        session_start();
         // applies message to session super global
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
@@ -119,7 +118,6 @@ if (isset($_POST['first_name'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
         header("location:../addSpeaker.php");

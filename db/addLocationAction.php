@@ -66,7 +66,6 @@ if (isset($_POST['venue_name'])) {
                                 VALUES (:venue_name, :state, :city, :street_number, :street_name, :suite, :zipcode, :phone)");
         $query->execute($data);
         // applies message to session super global
-        session_start();
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
         header("Location: ../addLocation.php");
@@ -78,7 +77,6 @@ if (isset($_POST['venue_name'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
         header("location:../addLocation.php");

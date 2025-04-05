@@ -54,7 +54,6 @@ if (isset($_POST["first_name"])) {
 
         $query = $dbc->prepare("INSERT INTO user_table (first_name, last_name, email, password, phone, role, create_date) VALUES (:first_name, :last_name, :email, :password, :phone, :role, :create_date)");
         $query->execute($data);
-        session_start();
         // applies message to session super global
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
@@ -67,7 +66,6 @@ if (isset($_POST["first_name"])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
         header("location:../addUser.php");

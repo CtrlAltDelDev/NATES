@@ -1,5 +1,4 @@
 <?php
-session_start();
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -104,12 +103,11 @@ elseif (isset($_POST['user_id'])) {
         $update_query = "UPDATE user_table SET " . implode(", ", $update_parts) . " WHERE user_id = :user_id";
         $update_stmt = $dbc->prepare($update_query);
         $update_stmt->execute($data);
-        session_start();
         // applies message to session super global
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
 
-        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&user_id=" .$_POST['user_id']);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?&user_id=" .$_POST['user_id']);
         exit;
 
     } else {
@@ -118,7 +116,6 @@ elseif (isset($_POST['user_id'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
 

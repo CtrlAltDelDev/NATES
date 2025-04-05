@@ -1,6 +1,5 @@
 <?php
 global $dbc;
-session_start();
 include("includes/header.php");
 include("includes/nav.php");
 include_once("db/dbconnect.php");
@@ -122,11 +121,10 @@ elseif (isset($_POST['location_id'])) {
 
         $update_query->execute($data);
 
-        session_start();
         // applies message to session super global
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
-        header("Location: " . $_SERVER['PHP_SELF'] . "?error=$message&location_id=" .$_POST['location_id']);
+        header("Location: " . $_SERVER['PHP_SELF'] . "?location_id=" .$_POST['location_id']);
         exit;
 
     } else {
@@ -135,7 +133,6 @@ elseif (isset($_POST['location_id'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
 

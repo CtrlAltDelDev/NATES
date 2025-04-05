@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 global $dbc;
 include("includes/header.php");
 include("includes/nav.php");
@@ -16,7 +14,6 @@ if (isset($_GET['user_id'])) {
 }
 ?>
 <?php include("includes/flashMessage.php"); ?>
-
 <?php
 echo '<main>';
 echo '    <form method="post" action="db/addUserAction.php">';

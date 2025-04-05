@@ -73,7 +73,6 @@ if (isset($_POST['event_name'])) {
                                 VALUES(:event_name, :speaker_id, :event_description, :event_start, :event_end, :location_id, :event_price, :creation_date)");
         $query->execute($data);
         // applies message to session super global
-        session_start();
         $_SESSION['message'] = "Added successfully!";
         $_SESSION['message_type'] = "success";
         header("Location: ../addEvent.php");
@@ -85,7 +84,6 @@ if (isset($_POST['event_name'])) {
             $message .= "<li>$value</li>";
         }
         $message .= "</ul>";
-        session_start();
         $_SESSION["message"] = $message;
         $_SESSION['message_type'] = "error";
         header("location:../addEvent.php");
